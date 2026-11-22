@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUBG Stylish Name Generator — Fancy Fonts, Symbols & Clan Names</title>
+<meta name="description" content="Free PUBG stylish name generator. Turn your name into 35+ stylish fonts with symbols, crowns and decorations. Copy any style in one click. Works on PUBG Mobile and PC.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0d1117;color:#e6edf3;line-height:1.7}
+header{background:#161b22;border-bottom:2px solid #f0a500;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:10}
+.logo{font-size:22px;font-weight:800;color:#f0a500;text-decoration:none}
+.logo span{color:#fff}
+nav a{color:#e6edf3;text-decoration:none;margin:0 10px;font-weight:600}
+nav a:hover{color:#f0a500}
+.hero{text-align:center;padding:48px 18px 30px;background:linear-gradient(180deg,#161b22,#0d1117)}
+.hero h1{font-size:38px;color:#f0a500;margin-bottom:10px}
+.hero p{max-width:700px;margin:0 auto 22px;color:#c9d1d9;font-size:17px}
+.gen{max-width:760px;margin:0 auto;background:#161b22;border:2px solid #f0a500;border-radius:14px;padding:24px}
+.gen input{width:100%;padding:14px;font-size:18px;border-radius:8px;border:1px solid #30363d;background:#0d1117;color:#fff;margin-bottom:14px}
+.gen.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.btn{background:#f0a500;color:#111;border:none;padding:13px 26px;font-size:16px;font-weight:700;border-radius:8px;cursor:pointer}
+.btn:hover{background:#ffc233}
+.btn.ghost{background:#21262d;color:#f0a500;border:1px solid #f0a500}
+.btn.ghost:hover{background:#30363d}
+#results{margin-top:20px;text-align:left}
+.result{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:10px 14px;margin-bottom:8px}
+.result.style{font-size:12px;color:#8b949e;text-transform:uppercase;letter-spacing:1px;min-width:110px}
+.result.text{flex:1;font-size:18px;word-break:break-all}
+.copy{background:#21262d;color:#f0a500;border:1px solid #f0a500;padding:7px 14px;border-radius:6px;cursor:pointer;font-weight:700;white-space:nowrap}
+.copy:hover{background:#30363d}
+.hint{font-size:13px;color:#8b949e;margin-top:10px}
+section{max-width:1100px;margin:0 auto;padding:36px 18px}
+section h2{font-size:28px;color:#f0a500;margin-bottom:6px}
+section.sub{color:#8b949e;margin-bottom:22px}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.tool-card{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:20px;text-decoration:none;color:#e6edf3}
+.tool-card:hover{border-color:#f0a500}
+.tool-card h3{color:#f0a500;margin-bottom:8px;font-size:19px}
+.tool-card p{font-size:14px;color:#c9d1d9}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:12px;overflow:hidden;text-decoration:none;color:#e6edf3}
+.card:hover{border-color:#f0a500}
+.card img{width:100%;height:160px;object-fit:cover;display:block}
+.card.body{padding:16px}
+.card h3{font-size:17px;color:#fff;margin-bottom:6px}
+.card p{font-size:14px;color:#c9d1d9}
+.dl{background:#161b22;border:2px solid #f0a500;border-radius:14px;padding:28px;text-align:center}
+.dl h2{margin-bottom:8px}
+.dl p{color:#c9d1d9;margin-bottom:16px}
+.dl a{display:inline-block;background:#f0a500;color:#111;padding:13px 24px;margin:6px;border-radius:8px;font-weight:700;text-decoration:none}
+.dl a:hover{background:#ffc233}
+.faq h3{font-size:17px;color:#f0a500;margin:16px 0 4px}
+footer{background:#161b22;text-align:center;padding:24px 18px;color:#8b949e;font-size:14px;border-top:2px solid #f0a500}
+footer a{color:#f0a500;text-decoration:none;margin:0 8px}
+@media(max-width:600px){.hero h1{font-size:28px}.result{flex-wrap:wrap}.result.style{min-width:0}}
+</style>
+</head>
+<body>
+<header>
+<a class="logo" href="index.html">PUBG <span>Stylish Names</span></a>
+<nav><a href="index.html">Home</a><a href="#guides">Guides</a><a href="#tools">Tools</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+</header>
+
+<div class="hero">
+<h1>PUBG Stylish Name Generator</h1>
+<p>Type your name and get 35+ stylish versions with fancy fonts, symbols, crowns and decorations. Copy any style in one click and use it in PUBG Mobile or PUBG PC.</p>
+<div class="gen">
+<input id="nameInput" type="text" placeholder="Type your name here... e.g. ShadowHunter" maxlength="30" value="ShadowHunter">
+<div class="btns">
+<button class="btn" onclick="generate()">Generate Stylish Names</button>
+<button class="btn ghost" onclick="randomStyle()">Random Style</button>
+</div>
+<div id="results"></div>
+<p class="hint">Tip: PUBG names allow 3–16 characters. Keep your name short so every symbol fits.</p>
+</div>
+</div>
+
+<section id="tools">
+<h2>Free PUBG Name Tools</h2>
+<p class="sub">Four free tools that run entirely in your browser — no sign-up, no downloads.</p>
+<div class="tools-grid">
+<a class="tool-card" href="tools/stylish-name-generator.html"><h3>Stylish Name Generator</h3><p>Turn any name into 35+ fancy font styles with symbols and decorations. One-click copy.</p></a>
+<a class="tool-card" href="tools/clan-name-generator.html"><h3>Clan Name Generator</h3><p>Generate stylish clan and team names for your PUBG squad, with copy buttons.</p></a>
+<a class="tool-card" href="tools/fancy-text-decorator.html"><h3>Fancy Text Decorator</h3><p>Decorate any text with stars, crowns, brackets, hearts and more.</p></a>
+<a class="tool-card" href="tools/name-style-preview.html"><h3>Name Style Preview</h3><p>See your name in 12 different styles side by side and pick your favourite.</p></a>
+</div>
+</section>
+
+<section id="guides">
+<h2>PUBG Name Guides</h2>
+<p class="sub">Step-by-step guides, name ideas and symbol lists for PUBG Mobile and PC.</p>
+<div class="cards">
+<a class="card" href="guides/how-to-change-name-pubg-mobile.html"><img src="images/how-to-change-name-pubg-mobile.jpg" alt="How to change your name in PUBG Mobile"><div class="body"><h3>How to Change Your Name in PUBG Mobile</h3><p>Use a rename card to change your PUBG Mobile name step by step.</p></div></a>
+<a class="card" href="guides/how-to-change-name-pubg-pc.html"><img src="images/how-to-change-name-pubg-pc.jpg" alt="How to change your name in PUBG PC"><div class="body"><h3>How to Change Your Name in PUBG PC</h3><p>Change your Battlegrounds nickname on Steam in a few simple steps.</p></div></a>
+<a class="card" href="guides/best-stylish-names-for-boys.html"><img src="images/best-stylish-names-for-boys.jpg" alt="Best stylish PUBG names for boys"><div class="body"><h3>Best Stylish PUBG Names for Boys</h3><p>Cool, bold and pro-style name ideas for male players.</p></div></a>
+<a class="card" href="guides/best-stylish-names-for-girls.html"><img src="images/best-stylish-names-for-girls.jpg" alt="Best stylish PUBG names for girls"><div class="body"><h3>Best Stylish PUBG Names for Girls</h3><p>Elegant, cute and fierce stylish names for female players.</p></div></a>
+<a class="card" href="guides/stylish-names-with-symbols.html"><img src="images/stylish-names-with-symbols.jpg" alt="Stylish PUBG names with symbols"><div class="body"><h3>Stylish PUBG Names with Symbols</h3><p>Symbols, crowns and decorations that make your name stand out.</p></div></a>
+<a class="card" href="guides/stylish-clan-names.html"><img src="images/stylish-clan-names.jpg" alt="Stylish clan names for PUBG"><div class="body"><h3>Best Stylish Clan Names for PUBG</h3><p>Strong clan and squad names your whole team will love.</p></div></a>
+<a class="card" href="guides/funny-pubg-names.html"><img src="images/funny-pubg-names.jpg" alt="Funny PUBG names"><div class="body"><h3>Funny PUBG Names That Make Everyone Laugh</h3><p>Hilarious name ideas for players who do not take the lobby too seriously.</p></div></a>
+<a class="card" href="guides/pro-player-style-names.html"><img src="images/pro-player-style-names.jpg" alt="Pro player style PUBG names"><div class="body"><h3>Pro Player Style PUBG Names</h3><p>Clean, sharp names inspired by the pro scene.</p></div></a>
+<a class="card" href="guides/how-to-get-rename-card-free.html"><img src="images/how-to-get-rename-card-free.jpg" alt="How to get a rename card free in PUBG Mobile"><div class="body"><h3>How to Get a Rename Card Free in PUBG Mobile</h3><p>Every legit way to earn a free rename card without spending UC.</p></div></a>
+<a class="card" href="guides/pubg-name-rules-character-limits.html"><img src="images/pubg-name-rules-character-limits.jpg" alt="PUBG name rules and character limits"><div class="body"><h3>PUBG Name Rules and Character Limits Explained</h3><p>What characters are allowed, length limits and banned words.</p></div></a>
+<a class="card" href="guides/stylish-names-for-snipers.html"><img src="images/stylish-names-for-snipers.jpg" alt="Stylish names for snipers in PUBG"><div class="body"><h3>Best Stylish Names for Snipers in PUBG</h3><p>Deadly sniper names for long-range players.</p></div></a>
+<a class="card" href="guides/stylish-names-for-rushers.html"><img src="images/stylish-names-for-rushers.jpg" alt="Stylish names for rushers in PUBG"><div class="body"><h3>Best Stylish Names for Rushers in PUBG</h3><p>Aggressive rusher names for close-combat players.</p></div></a>
+<a class="card" href="guides/pubg-names-in-different-languages.html"><img src="images/pubg-names-in-different-languages.jpg" alt="PUBG names in different languages"><div class="body"><h3>PUBG Names in Different Languages</h3><p>Stylish names in Arabic, Urdu, Hindi, Turkish and more.</p></div></a>
+<a class="card" href="guides/how-to-make-your-name-stand-out.html"><img src="images/how-to-make-your-name-stand-out.jpg" alt="How to make your PUBG name stand out"><div class="body"><h3>How to Make Your PUBG Name Stand Out</h3><p>Simple tricks to make your name memorable in the lobby.</p></div></a>
+<a class="card" href="guides/best-symbols-for-pubg-names.html"><img src="images/best-symbols-for-pubg-names.jpg" alt="Best symbols for PUBG names"><div class="body"><h3>Best Symbols for PUBG Names</h3><p>The most popular symbols for PUBG names and what they mean.</p></div></a>
+<a class="card" href="guides/pubg-mobile-vs-pc-name-rules.html"><img src="images/pubg-mobile-vs-pc-name-rules.jpg" alt="PUBG Mobile vs PC name rules"><div class="body"><h3>PUBG Mobile vs PC Name Rules Compared</h3><p>How name rules differ between mobile and PC — and what to watch for.</p></div></a>
+<a class="card" href="guides/stylish-names-for-couples-duos.html"><img src="images/stylish-names-for-couples-duos.jpg" alt="Stylish PUBG names for couples and duos"><div class="body"><h3>Stylish PUBG Names for Couples and Duos</h3><p>Matching duo names for you and your partner or best friend.</p></div></a>
+<a class="card" href="guides/how-to-pick-a-unique-pubg-name.html"><img src="images/how-to-pick-a-unique-pubg-name.jpg" alt="How to pick a unique PUBG name"><div class="body"><h3>How to Pick a Unique PUBG Name</h3><p>A simple method to create a name nobody else is using.</p></div></a>
+<a class="card" href="guides/pubg-name-ideas-2026.html"><img src="images/pubg-name-ideas-2026.jpg" alt="PUBG name ideas 2026"><div class="body"><h3>100+ PUBG Name Ideas for 2026</h3><p>Fresh name ideas for the new season, sorted by style.</p></div></a>
+<a class="card" href="guides/what-to-do-if-your-name-is-taken.html"><img src="images/what-to-do-if-your-name-is-taken.jpg" alt="What to do if your PUBG name is taken"><div class="body"><h3>What to Do If Your PUBG Name Is Taken</h3><p>Smart variations to keep the name you love when it is already taken.</p></div></a>
+</div>
+</section>
+
+<section>
+<div class="dl">
+<h2>Download PUBG Now</h2>
+<p>Get the official game free on PC or mobile.</p>
+<a href="https://store.steampowered.com/app/578080" target="_blank" rel="noopener">Download on Steam</a>
+<a href="https://play.google.com/store/apps/details/PUBG_MOBILE?id=com.tencent.ig&hl=en_GB" target="_blank" rel="noopener">Get it on Google Play</a>
+<a href="https://apps.apple.com/pk/app/pubg-mobile/id1330123889" target="_blank" rel="noopener">Download on the App Store</a>
+</div>
+</section>
+
+<section class="faq">
+<h2>Frequently Asked Questions</h2>
+<h3>Is this stylish name generator free?</h3>
+<p>Yes. Every tool on this site is completely free, works in your browser, and needs no sign-up.</p>
+<h3>Will these stylish names work in PUBG Mobile?</h3>
+<p>Most of them will. PUBG Mobile accepts many Unicode symbols, but some special characters are blocked. If a name is rejected, try a simpler style from the list.</p>
+<h3>How do I use a stylish name in PUBG?</h3>
+<p>Generate a name, tap Copy, then open PUBG, go to your profile, and use a rename card to change your name. Paste the copied name in the name box.</p>
+<h3>Can I use these names on PUBG PC too?</h3>
+<p>Yes. PUBG: Battlegrounds on PC also accepts most Unicode characters. The same rules about length and banned words apply.</p>
+</section>
+
+<footer>
+<a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="disclaimer.html">Disclaimer</a>
+<p>© 2026 PUBG Stylish Name Generator. Not affiliated with KRAFTON, PUBG, or Tencent. PUBG is a registered trademark of KRAFTON, Inc.</p>
+<p>Download the official game: <a href="https://store.steampowered.com/app/578080" target="_blank" rel="noopener">Download on Steam</a> | <a href="https://play.google.com/store/apps/details/PUBG_MOBILE?id=com.tencent.ig&hl=en_GB" target="_blank" rel="noopener">Get it on Google Play</a> | <a href="https://apps.apple.com/pk/app/pubg-mobile/id1330123889" target="_blank" rel="noopener">Download on the App Store</a></p>
+</footer>
+
+<script>
+function cp(n){return String.fromCodePoint(n);}
+function mapRange(s,up,low,dig,exc){
+var o='';
+for(var ch of s){
+if(exc&&exc[ch]!==undefined){o+=exc[ch];continue;}
+var c=ch.codePointAt(0);
+if(c>=65&&c<=90)o+=cp(up+c-65);
+else if(c>=97&&c<=122)o+=cp(low+c-97);
+else if(dig&&c>=48&&c<=57)o+=cp(dig+c-48);
+else o+=ch;
+}
+return o;
+}
+function mapDict(s,dict){var o='';for(var ch of s){o+=(dict[ch]!==undefined?dict[ch]:ch);}return o;}
+var SMALLCAPS={a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ꞯ',r:'ʀ',s:'ꜱ',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ',A:'ᴀ',B:'ʙ',C:'ᴄ',D:'ᴅ',E:'ᴇ',F:'ꜰ',G:'ɢ',H:'ʜ',I:'ɪ',J:'ᴊ',K:'ᴋ',L:'ʟ',M:'ᴍ',N:'ɴ',O:'ᴏ',P:'ᴘ',Q:'ꞯ',R:'ʀ',S:'ꜱ',T:'ᴛ',U:'ᴜ',V:'ᴠ',W:'ᴡ',X:'x',Y:'ʏ',Z:'ᴢ'};
+var SUPER={a:'ᵃ',b:'ᵇ',c:'ᶜ',d:'ᵈ',e:'ᵉ',f:'ᶠ',g:'ᵍ',h:'ʰ',i:'ⁱ',j:'ʲ',k:'ᵏ',l:'ˡ',m:'ᵐ',n:'ⁿ',o:'ᵒ',p:'ᵖ',q:'ᑫ',r:'ʳ',s:'ˢ',t:'ᵗ',u:'ᵘ',v:'ᵛ',w:'ʷ',x:'ˣ',y:'ʸ',z:'ᶻ',A:'ᵃ',B:'ᵇ',C:'ᶜ',D:'ᵈ',E:'ᵉ',F:'ᶠ',G:'ᵍ',H:'ʰ',I:'ⁱ',J:'ʲ',K:'ᵏ',L:'ˡ',M:'ᵐ',N:'ⁿ',O:'ᵒ',P:'ᵖ',Q:'ᑫ',R:'ʳ',S:'ˢ',T:'ᵗ',U:'ᵘ',V:'ᵛ',W:'ʷ',X:'ˣ',Y:'ʸ',Z:'ᶻ'};
+var UPSIDE={a:'ɐ',b:'q',c:'ɔ',d:'p',e:'ǝ',f:'ɟ',g:'ɓ',h:'ɥ',i:'ᴉ',j:'ɾ',k:'ʞ',l:'l',m:'ɯ',n:'u',o:'o',p:'d',q:'b',r:'ɹ',s:'s',t:'ʇ',u:'n',v:'ʌ',w:'ʍ',x:'x',y:'ʎ',z:'z',A:'∀',B:'ᗺ',C:'Ɔ',D:'ᗡ',E:'Ǝ',F:'Ⅎ',G:'⅁',H:'H',I:'I',J:'ſ',K:'ʞ',L:'⅂',M:'W',N:'N',O:'O',P:'Ԁ',Q:'Q',R:'ᴚ',S:'S',T:'⟘',U:'∩',V:'Λ',W:'M',X:'X',Y:'⅄',Z:'Z'};
+var SCRIPT_EXC={B:'ℬ',E:'ℰ',F:'ℱ',H:'ℋ',I:'ℐ',L:'ℒ',M:'ℳ',R:'ℛ'};
+var FRAK_EXC={C:'ℭ',H:'ℌ',I:'ℑ',R:'ℜ',Z:'ℨ'};
+var DS_EXC={C:'ℂ',H:'ℍ',N:'ℕ',P:'ℙ',Q:'ℚ',R:'ℝ',Z:'ℤ'};
+var CIRCLE_DIG={0:'⓪',1:'①',2:'②',3:'③',4:'④',5:'⑤',6:'⑥',7:'⑦',8:'⑧',9:'⑨'};
+var STYLES=[
+{name:'Bold',fn:function(s){return mapRange(s,0x1D400,0x1D41A,0x1D7CE);}},
+{name:'Italic',fn:function(s){return mapRange(s,0x1D434,0x1D44E,null,{h:'ℎ'});}},
+{name:'Bold Italic',fn:function(s){return mapRange(s,0x1D468,0x1D482,null);}},
+{name:'Script',fn:function(s){return mapRange(s,0x1D49C,0x1D4B6,null,SCRIPT_EXC);}},
+{name:'Bold Script',fn:function(s){return mapRange(s,0x1D4D0,0x1D4EA,null);}},
+{name:'Fraktur',fn:function(s){return mapRange(s,0x1D504,0x1D51E,null,FRAK_EXC);}},
+{name:'Bold Fraktur',fn:function(s){return mapRange(s,0x1D56C,0x1D586,null);}},
+{name:'Double-Struck',fn:function(s){return mapRange(s,0x1D538,0x1D552,0x1D7D8,DS_EXC);}},
+{name:'Sans',fn:function(s){return mapRange(s,0x1D5A0,0x1D5BA,0x1D7E2);}},
+{name:'Sans Bold',fn:function(s){return mapRange(s,0x1D5D4,0x1D5EE,0x1D7EC);}},
+{name:'Sans Italic',fn:function(s){return mapRange(s,0x1D608,0x1D622,null);}},
+{name:'Monospace',fn:function(s){return mapRange(s,0x1D670,0x1D68A,0x1D7F6);}},
+{name:'Fullwidth',fn:function(s){return mapRange(s,0xFF21,0xFF41,0xFF10);}},
+{name:'Circled',fn:function(s){return mapRange(s,0x24B6,0x24D0,null,CIRCLE_DIG);}},
+{name:'Small Caps',fn:function(s){return mapDict(s,SMALLCAPS);}},
+{name:'Superscript',fn:function(s){return mapDict(s,SUPER);}},
+{name:'Upside Down',fn:function(s){return mapDict(s,UPSIDE).split('').reverse().join('');}},
+{name:'Strikethrough',fn:function(s){return s.split('').map(function(c){return c===' '?c:c+'̶';}).join('');}},
+{name:'Underline',fn:function(s){return s.split('').map(function(c){return c===' '?c:c+'̲';}).join('');}}
+];
+var DECOS=[
+{name:'Stars',pre:'★ ',suf:' ★'},
+{name:'Crown',pre:'♛ ',suf:' ♛'},
+{name:'Royal',pre:'꧁',suf:'꧂'},
+{name:'Angel',pre:'༺',suf:'༻'},
+{name:'Brackets',pre:'\u3010',suf:'\u3011'},
+{name:'Quotes',pre:'『',suf:'』'},
+{name:'Arrows',pre:'《',suf:'》'},
+{name:'Box',pre:'╔ ',suf:' ╗'},
+{name:'Hearts',pre:'♡ ',suf:' ♡'},
+{name:'Sparkles',pre:'✦ ',suf:' ✦'},
+{name:'Swords',pre:'⚔ ',suf:' ⚔ '},
+{name:'Skull',pre:'☠ ',suf:' ☠'}
+];
+var COMBOS=[
+{name:'Bold + Stars',fn:function(s){return '★ '+mapRange(s,0x1D400,0x1D41A,0x1D7CE)+' ★';}},
+{name:'Script + Crown',fn:function(s){return '♛ '+mapRange(s,0x1D49C,0x1D4B6,null,SCRIPT_EXC)+' ♛';}},
+{name:'Fraktur + Cross',fn:function(s){return '† '+mapRange(s,0x1D504,0x1D51E,null,FRAK_EXC)+' †';}},
+{name:'Mono + Brackets',fn:function(s){return '\u3010'+mapRange(s,0x1D670,0x1D68A,0x1D7F6)+'\u3011';}},
+{name:'Double + Crown',fn:function(s){return '♛ '+mapRange(s,0x1D538,0x1D552,0x1D7D8,DS_EXC)+' ♛';}}
+];
+function allVariants(name){
+var out=[];
+STYLES.forEach(function(st){out.push({label:st.name,text:st.fn(name)});});
+DECOS.forEach(function(d){out.push({label:d.name+' Style',text:d.pre+name+d.suf});});
+COMBOS.forEach(function(c){out.push({label:c.name,text:c.fn(name)});});
+return out;
+}
+function copyText(t,btn){
+function done(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1200);}
+if(navigator.clipboard&&navigator.clipboard.writeText){
+navigator.clipboard.writeText(t).then(done).catch(function(){fallbackCopy(t,btn,done);});
+}else{fallbackCopy(t,btn,done);}
+}
+function fallbackCopy(t,btn,done){
+var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+document.body.appendChild(ta);ta.select();
+try{document.execCommand('copy');done();}catch(e){btn.textContent='Failed';}
+document.body.removeChild(ta);
+}
+function renderVariants(list){
+var box=document.getElementById('results');box.innerHTML='';
+list.forEach(function(v){
+var row=document.createElement('div');row.className='result';
+var lab=document.createElement('span');lab.className='style';lab.textContent=v.label;
+var txt=document.createElement('span');txt.className='text';txt.textContent=v.text;
+var btn=document.createElement('button');btn.className='copy';btn.textContent='Copy';
+btn.onclick=function(){copyText(v.text,btn);};
+row.appendChild(lab);row.appendChild(txt);row.appendChild(btn);
+box.appendChild(row);
+});
+}
+function generate(){
+var name=document.getElementById('nameInput').value.trim();
+if(!name){document.getElementById('results').innerHTML='<p class="hint">Please type a name first.</p>';return;}
+renderVariants(allVariants(name));
+}
+function randomStyle(){
+var name=document.getElementById('nameInput').value.trim();
+if(!name){document.getElementById('results').innerHTML='<p class="hint">Please type a name first.</p>';return;}
+var all=allVariants(name);
+var pick=all[Math.floor(Math.random()*all.length)];
+renderVariants([pick]);
+}
+document.getElementById('nameInput').addEventListener('input',generate);
+generate();
+</script>
+</body>
+</html>

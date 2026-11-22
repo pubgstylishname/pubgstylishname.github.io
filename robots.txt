@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pubgstylishname.github.io/sitemap.xml
