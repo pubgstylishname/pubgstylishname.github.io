@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clan Name Generator — PUBG Stylish Name Generator</title>
+<meta name="description" content="Free PUBG clan name generator: create stylish clan and team names for your squad with one click. Copy any name instantly.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0d1117;color:#e6edf3;line-height:1.7}
+header{background:#161b22;border-bottom:2px solid #f0a500;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{font-size:22px;font-weight:800;color:#f0a500;text-decoration:none}
+.logo span{color:#fff}
+nav a{color:#e6edf3;text-decoration:none;margin:0 10px;font-weight:600}
+nav a:hover{color:#f0a500}
+main{max-width:860px;margin:0 auto;padding:28px 18px}
+h1{font-size:30px;color:#f0a500;margin-bottom:8px}
+.lead{color:#c9d1d9;margin-bottom:20px}
+.gen{background:#161b22;border:2px solid #f0a500;border-radius:14px;padding:24px}
+.gen label{display:block;font-weight:700;margin-bottom:6px;color:#f0a500}
+.gen input{width:100%;padding:14px;font-size:18px;border-radius:8px;border:1px solid #30363d;background:#0d1117;color:#fff;margin-bottom:14px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.btn{background:#f0a500;color:#111;border:none;padding:13px 26px;font-size:16px;font-weight:700;border-radius:8px;cursor:pointer}
+.btn:hover{background:#ffc233}
+#results{margin-top:20px}
+.result{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:10px 14px;margin-bottom:8px}
+.result .text{flex:1;font-size:18px;word-break:break-all}
+.copy{background:#21262d;color:#f0a500;border:1px solid #f0a500;padding:7px 14px;border-radius:6px;cursor:pointer;font-weight:700;white-space:nowrap}
+.copy:hover{background:#30363d}
+.hint{font-size:13px;color:#8b949e;margin-top:10px}
+.dl{background:#161b22;border:2px solid #f0a500;border-radius:12px;padding:22px;text-align:center;margin:30px 0}
+.dl h2{color:#f0a500;margin-bottom:8px}
+.dl a{display:inline-block;background:#f0a500;color:#111;padding:12px 20px;margin:6px;border-radius:8px;font-weight:700;text-decoration:none}
+.dl a:hover{background:#ffc233}
+footer{background:#161b22;text-align:center;padding:20px;color:#8b949e;font-size:14px}
+footer a{color:#f0a500;text-decoration:none;margin:0 8px}
+.back{display:inline-block;margin-bottom:14px;color:#f0a500;text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+<header><a class="logo" href="../index.html">PUBG <span>Stylish Names</span></a><nav><a href="../index.html">Home</a><a href="../index.html#guides">Guides</a><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav></header>
+<main>
+<a class="back" href="../index.html">← Back to Home</a>
+<h1>Clan Name Generator</h1>
+<p class="lead">Generate stylish clan and team names for your PUBG squad. Optionally type your own word to build the names around it, then tap Generate and copy your favourite.</p>
+<div class="gen">
+<label for="wordInput">Your word (optional)</label>
+<input id="wordInput" type="text" placeholder="e.g. Shadow, Venom, Dragon..." maxlength="20">
+<div class="btns"><button class="btn" onclick="generateClan()">Generate Clan Names</button></div>
+<div id="results"></div>
+<p class="hint">Tip: short clan names are easier to remember and fit better in the game.</p>
+</div>
+<div class="dl"><h2>Download PUBG Now</h2><p>Get the official game free on PC or mobile.</p><a href="https://store.steampowered.com/app/578080" target="_blank" rel="noopener">Download on Steam</a><a href="https://play.google.com/store/apps/details/PUBG_MOBILE?id=com.tencent.ig&hl=en_GB" target="_blank" rel="noopener">Get it on Google Play</a><a href="https://apps.apple.com/pk/app/pubg-mobile/id1330123889" target="_blank" rel="noopener">Download on the App Store</a></div>
+</main>
+<footer><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a><a href="../disclaimer.html">Disclaimer</a><p>© 2026 PUBG Stylish Name Generator. Not affiliated with KRAFTON, PUBG, or Tencent.</p><p>Download the official game: <a href="https://store.steampowered.com/app/578080" target="_blank" rel="noopener">Download on Steam</a> | <a href="https://play.google.com/store/apps/details/PUBG_MOBILE?id=com.tencent.ig&hl=en_GB" target="_blank" rel="noopener">Get it on Google Play</a> | <a href="https://apps.apple.com/pk/app/pubg-mobile/id1330123889" target="_blank" rel="noopener">Download on the App Store</a></p>
+</footer>
+<script>
+function cp(n){return String.fromCodePoint(n);}
+function mapRange(s,up,low,dig,exc){
+  var o='';
+  for(var ch of s){
+    if(exc&&exc[ch]!==undefined){o+=exc[ch];continue;}
+    var c=ch.codePointAt(0);
+    if(c>=65&&c<=90)o+=cp(up+c-65);
+    else if(c>=97&&c<=122)o+=cp(low+c-97);
+    else if(dig&&c>=48&&c<=57)o+=cp(dig+c-48);
+    else o+=ch;
+  }
+  return o;
+}
+var SCRIPT_EXC={B:'ℬ',E:'ℰ',F:'ℱ',H:'ℋ',I:'ℐ',L:'ℒ',M:'ℳ',R:'ℛ'};
+var FRAK_EXC={C:'ℭ',H:'ℌ',I:'ℑ',R:'ℜ',Z:'ℨ'};
+var DS_EXC={C:'ℂ',H:'ℍ',N:'ℕ',P:'ℙ',Q:'ℚ',R:'ℝ',Z:'ℤ'};
+var FONTS=[
+ function(s){return s;},
+ function(s){return mapRange(s,0x1D400,0x1D41A,0x1D7CE);},
+ function(s){return mapRange(s,0x1D49C,0x1D4B6,null,SCRIPT_EXC);},
+ function(s){return mapRange(s,0x1D504,0x1D51E,null,FRAK_EXC);},
+ function(s){return mapRange(s,0x1D538,0x1D552,0x1D7D8,DS_EXC);},
+ function(s){return mapRange(s,0x1D5D4,0x1D5EE,0x1D7EC);},
+ function(s){return mapRange(s,0x24B6,0x24D0,null,{0:'⓪',1:'①',2:'②',3:'③',4:'④',5:'⑤',6:'⑥',7:'⑦',8:'⑧',9:'⑨'});},
+ function(s){return mapRange(s,0xFF21,0xFF41,0xFF10);}
+];
+var DECOS=[['',''],['★ ',' ★'],['♛ ',' ♛'],['꧁','꧂'],['༺','༻'],['\u3010','\u3011'],['『','』'],['♡ ',' ♡']];
+var PRE=['Dark','Shadow','Night','Blood','Iron','Ghost','Venom','Thunder','Dragon','Silent','Savage','Royal','Elite','Storm','Wolf','Cobra','Phoenix','Titan','Blaze','Frost'];
+var CORE=['Warriors','Legends','Hunters','Killers','Snipers','Squad','Army','Force','Kings','Assassins','Raiders','Predators','Wolves','Eagles','Dragons','Spartans','Ninjas','Reapers','Titans','Ghosts'];
+var SUF=['OP','Gaming','Esports','Official','YT','Pro','007','X','2.0','Squad','Club','United'];
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function titleCase(w){return w.charAt(0).toUpperCase()+w.slice(1).toLowerCase();}
+function makeName(){
+  var word=document.getElementById('wordInput').value.trim();
+  var pre=word?titleCase(word):pick(PRE);
+  var core=pick(CORE);
+  var name=pre+' '+core;
+  if(Math.random()<0.5)name+=' '+pick(SUF);
+  var font=pick(FONTS);
+  var deco=pick(DECOS);
+  return deco[0]+font(name)+deco[1];
+}
+function copyText(t,btn){
+  function done(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1200);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(done).catch(function(){fallbackCopy(t,btn,done);});
+  }else{fallbackCopy(t,btn,done);}
+}
+function fallbackCopy(t,btn,done){
+  var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');done();}catch(e){btn.textContent='Failed';}
+  document.body.removeChild(ta);
+}
+function generateClan(){
+  var box=document.getElementById('results');box.innerHTML='';
+  var seen={};
+  var count=0,guard=0;
+  while(count<12&&guard<200){
+    guard++;
+    var n=makeName();
+    if(seen[n])continue;
+    seen[n]=true;count++;
+    var row=document.createElement('div');row.className='result';
+    var txt=document.createElement('span');txt.className='text';txt.textContent=n;
+    var btn=document.createElement('button');btn.className='copy';btn.textContent='Copy';
+    (function(name,button){button.onclick=function(){copyText(name,button);};})(n,btn);
+    row.appendChild(txt);row.appendChild(btn);
+    box.appendChild(row);
+  }
+}
+generateClan();
+</script>
+</body>
+</html>

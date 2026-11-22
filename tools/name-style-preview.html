@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Name Style Preview — PUBG Stylish Name Generator</title>
+<meta name="description" content="Free name style preview: see your PUBG name in 12 different stylish fonts side by side and copy your favourite.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0d1117;color:#e6edf3;line-height:1.7}
+header{background:#161b22;border-bottom:2px solid #f0a500;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.logo{font-size:22px;font-weight:800;color:#f0a500;text-decoration:none}
+.logo span{color:#fff}
+nav a{color:#e6edf3;text-decoration:none;margin:0 10px;font-weight:600}
+nav a:hover{color:#f0a500}
+main{max-width:960px;margin:0 auto;padding:28px 18px}
+h1{font-size:30px;color:#f0a500;margin-bottom:8px}
+.lead{color:#c9d1d9;margin-bottom:20px}
+.gen{background:#161b22;border:2px solid #f0a500;border-radius:14px;padding:24px}
+.gen input{width:100%;padding:14px;font-size:18px;border-radius:8px;border:1px solid #30363d;background:#0d1117;color:#fff;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:20px}
+.card{background:#0d1117;border:1px solid #30363d;border-radius:10px;padding:16px;text-align:center}
+.card .style{font-size:12px;color:#8b949e;text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:8px}
+.card .text{font-size:21px;word-break:break-all;display:block;margin-bottom:12px;min-height:32px}
+.copy{background:#21262d;color:#f0a500;border:1px solid #f0a500;padding:7px 18px;border-radius:6px;cursor:pointer;font-weight:700}
+.copy:hover{background:#30363d}
+.hint{font-size:13px;color:#8b949e;margin-top:14px}
+.dl{background:#161b22;border:2px solid #f0a500;border-radius:12px;padding:22px;text-align:center;margin:30px 0}
+.dl h2{color:#f0a500;margin-bottom:8px}
+.dl a{display:inline-block;background:#f0a500;color:#111;padding:12px 20px;margin:6px;border-radius:8px;font-weight:700;text-decoration:none}
+.dl a:hover{background:#ffc233}
+footer{background:#161b22;text-align:center;padding:20px;color:#8b949e;font-size:14px}
+footer a{color:#f0a500;text-decoration:none;margin:0 8px}
+.back{display:inline-block;margin-bottom:14px;color:#f0a500;text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+<header><a class="logo" href="../index.html">PUBG <span>Stylish Names</span></a><nav><a href="../index.html">Home</a><a href="../index.html#guides">Guides</a><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav></header>
+<main>
+<a class="back" href="../index.html">← Back to Home</a>
+<h1>Name Style Preview</h1>
+<p class="lead">Type your name once and see it in 12 different styles side by side. Compare them all, then copy your favourite.</p>
+<div class="gen">
+<input id="nameInput" type="text" placeholder="Type your name here... e.g. ShadowHunter" maxlength="30" value="ShadowHunter">
+<div class="grid" id="grid"></div>
+<p class="hint">Tip: if a style is rejected by PUBG, try Bold, Sans Bold or Circled — they work most often.</p>
+</div>
+<div class="dl"><h2>Download PUBG Now</h2><p>Get the official game free on PC or mobile.</p><a href="https://store.steampowered.com/app/578080" target="_blank" rel="noopener">Download on Steam</a><a href="https://play.google.com/store/apps/details/PUBG_MOBILE?id=com.tencent.ig&hl=en_GB" target="_blank" rel="noopener">Get it on Google Play</a><a href="https://apps.apple.com/pk/app/pubg-mobile/id1330123889" target="_blank" rel="noopener">Download on the App Store</a></div>
+</main>
+<footer><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a><a href="../disclaimer.html">Disclaimer</a><p>© 2026 PUBG Stylish Name Generator. Not affiliated with KRAFTON, PUBG, or Tencent.</p><p>Download the official game: <a href="https://store.steampowered.com/app/578080" target="_blank" rel="noopener">Download on Steam</a> | <a href="https://play.google.com/store/apps/details/PUBG_MOBILE?id=com.tencent.ig&hl=en_GB" target="_blank" rel="noopener">Get it on Google Play</a> | <a href="https://apps.apple.com/pk/app/pubg-mobile/id1330123889" target="_blank" rel="noopener">Download on the App Store</a></p>
+</footer>
+<script>
+function cp(n){return String.fromCodePoint(n);}
+function mapRange(s,up,low,dig,exc){
+  var o='';
+  for(var ch of s){
+    if(exc&&exc[ch]!==undefined){o+=exc[ch];continue;}
+    var c=ch.codePointAt(0);
+    if(c>=65&&c<=90)o+=cp(up+c-65);
+    else if(c>=97&&c<=122)o+=cp(low+c-97);
+    else if(dig&&c>=48&&c<=57)o+=cp(dig+c-48);
+    else o+=ch;
+  }
+  return o;
+}
+function mapDict(s,dict){var o='';for(var ch of s){o+=(dict[ch]!==undefined?dict[ch]:ch);}return o;}
+var SMALLCAPS={a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ꞯ',r:'ʀ',s:'ꜱ',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ',A:'ᴀ',B:'ʙ',C:'ᴄ',D:'ᴅ',E:'ᴇ',F:'ꜰ',G:'ɢ',H:'ʜ',I:'ɪ',J:'ᴊ',K:'ᴋ',L:'ʟ',M:'ᴍ',N:'ɴ',O:'ᴏ',P:'ᴘ',Q:'ꞯ',R:'ʀ',S:'ꜱ',T:'ᴛ',U:'ᴜ',V:'ᴠ',W:'ᴡ',X:'x',Y:'ʏ',Z:'ᴢ'};
+var SUPER={a:'ᵃ',b:'ᵇ',c:'ᶜ',d:'ᵈ',e:'ᵉ',f:'ᶠ',g:'ᵍ',h:'ʰ',i:'ⁱ',j:'ʲ',k:'ᵏ',l:'ˡ',m:'ᵐ',n:'ⁿ',o:'ᵒ',p:'ᵖ',q:'ᑫ',r:'ʳ',s:'ˢ',t:'ᵗ',u:'ᵘ',v:'ᵛ',w:'ʷ',x:'ˣ',y:'ʸ',z:'ᶻ',A:'ᵃ',B:'ᵇ',C:'ᶜ',D:'ᵈ',E:'ᵉ',F:'ᶠ',G:'ᵍ',H:'ʰ',I:'ⁱ',J:'ʲ',K:'ᵏ',L:'ˡ',M:'ᵐ',N:'ⁿ',O:'ᵒ',P:'ᵖ',Q:'ᑫ',R:'ʳ',S:'ˢ',T:'ᵗ',U:'ᵘ',V:'ᵛ',W:'ʷ',X:'ˣ',Y:'ʸ',Z:'ᶻ'};
+var UPSIDE={a:'ɐ',b:'q',c:'ɔ',d:'p',e:'ǝ',f:'ɟ',g:'ɓ',h:'ɥ',i:'ᴉ',j:'ɾ',k:'ʞ',l:'l',m:'ɯ',n:'u',o:'o',p:'d',q:'b',r:'ɹ',s:'s',t:'ʇ',u:'n',v:'ʌ',w:'ʍ',x:'x',y:'ʎ',z:'z',A:'∀',B:'ᗺ',C:'Ɔ',D:'ᗡ',E:'Ǝ',F:'Ⅎ',G:'⅁',H:'H',I:'I',J:'ſ',K:'ʞ',L:'⅂',M:'W',N:'N',O:'O',P:'Ԁ',Q:'Q',R:'ᴚ',S:'S',T:'⟘',U:'∩',V:'Λ',W:'M',X:'X',Y:'⅄',Z:'Z'};
+var STYLES=[
+ {name:'Bold',fn:function(s){return mapRange(s,0x1D400,0x1D41A,0x1D7CE);}},
+ {name:'Italic',fn:function(s){return mapRange(s,0x1D434,0x1D44E,null,{h:'ℎ'});}},
+ {name:'Script',fn:function(s){return mapRange(s,0x1D49C,0x1D4B6,null,{B:'ℬ',E:'ℰ',F:'ℱ',H:'ℋ',I:'ℐ',L:'ℒ',M:'ℳ',R:'ℛ'});}},
+ {name:'Fraktur',fn:function(s){return mapRange(s,0x1D504,0x1D51E,null,{C:'ℭ',H:'ℌ',I:'ℑ',R:'ℜ',Z:'ℨ'});}},
+ {name:'Double-Struck',fn:function(s){return mapRange(s,0x1D538,0x1D552,0x1D7D8,{C:'ℂ',H:'ℍ',N:'ℕ',P:'ℙ',Q:'ℚ',R:'ℝ',Z:'ℤ'});}},
+ {name:'Sans Bold',fn:function(s){return mapRange(s,0x1D5D4,0x1D5EE,0x1D7EC);}},
+ {name:'Monospace',fn:function(s){return mapRange(s,0x1D670,0x1D68A,0x1D7F6);}},
+ {name:'Fullwidth',fn:function(s){return mapRange(s,0xFF21,0xFF41,0xFF10);}},
+ {name:'Circled',fn:function(s){return mapRange(s,0x24B6,0x24D0,null,{0:'⓪',1:'①',2:'②',3:'③',4:'④',5:'⑤',6:'⑥',7:'⑦',8:'⑧',9:'⑨'});}},
+ {name:'Small Caps',fn:function(s){return mapDict(s,SMALLCAPS);}},
+ {name:'Superscript',fn:function(s){return mapDict(s,SUPER);}},
+ {name:'Upside Down',fn:function(s){return mapDict(s,UPSIDE).split('').reverse().join('');}}
+];
+function copyText(t,btn){
+  function done(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},1200);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(done).catch(function(){fallbackCopy(t,btn,done);});
+  }else{fallbackCopy(t,btn,done);}
+}
+function fallbackCopy(t,btn,done){
+  var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');done();}catch(e){btn.textContent='Failed';}
+  document.body.removeChild(ta);
+}
+function preview(){
+  var name=document.getElementById('nameInput').value.trim();
+  var grid=document.getElementById('grid');
+  grid.innerHTML='';
+  if(!name){grid.innerHTML='<p class="hint">Please type a name first.</p>';return;}
+  STYLES.forEach(function(st){
+    var val=st.fn(name);
+    var card=document.createElement('div');card.className='card';
+    var lab=document.createElement('span');lab.className='style';lab.textContent=st.name;
+    var txt=document.createElement('span');txt.className='text';txt.textContent=val;
+    var btn=document.createElement('button');btn.className='copy';btn.textContent='Copy';
+    btn.onclick=function(){copyText(val,btn);};
+    card.appendChild(lab);card.appendChild(txt);card.appendChild(btn);
+    grid.appendChild(card);
+  });
+}
+document.getElementById('nameInput').addEventListener('input',preview);
+preview();
+</script>
+</body>
+</html>
